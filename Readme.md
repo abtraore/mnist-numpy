@@ -6,7 +6,7 @@
 
 ## SUMMARY
 
-This repository contains a Perceptron implementation using NumPy. There are no hidden details in the implementation, meaning that the focus is more on the learning process rather than on how "clean" or "abstract" the code can be. The task is to classify handwritten digits using the Perceptron.
+This repository contains a Perceptron implementation using NumPy. There are no hidden details in the implementation, meaning that the work focuses more on the learning process rather than on how "clean" or "abstract" the implementation is. The task is to classify handwritten digits using the Perceptron.
 
 ## ARCHITECTURE
 
@@ -25,44 +25,44 @@ The learning process can be divided into **4 parts** that we repeat **e** epochs
 
 The forward propagation consists of 3 steps in our case:
 
-1. Compute \(\hat{y}\) by following the formula: \(\hat{y} = Wx + b\) where \(x\) is the flattened input **(mx784)**, \(W\) the weights **(784xn)**, and \(b\) the bias **(1xn)**. The output of this operation will have a shape of **(mxn)**.
+1. Compute $\hat{y}$ by following the formula: $$\hat{y} = Wx + b$$ where $x$ is the flattened input **(mx784)**, $W$ the weights **(784xn)**, and $b$ the bias **(1xn)**. The output of this operation will have a shape of **(mxn)**.
 
-2. The linear operation is followed by an **"activation"** function, in our case [ReLU](<https://en.wikipedia.org/wiki/Rectifier_(neural_networks)>), which can be seen as whether a neuron is **"fired or not"**. ReLU equation is:
+2. The linear operation is followed by an **"activation"** function, in our case [ReLU](<https://en.wikipedia.org/wiki/Rectifier_(neural_networks)>), that can be seen as if a neuron is **"fired or not"**. ReLU equation is:
 
-   \[
+   $$
    f(x) =
    \begin{cases}
    x & \text{if } x > 0,\\
    0 & \text{otherwise}
    \end{cases}
-   \]
+   $$
 
    Note that the shape of the input remains unchanged after this operation.
 
-3. We apply the linear operation again to the output of ReLU, this time \(W\) has the shape (n, 10), where 10 is the number of classes in MNIST.
+3. We apply the linear operation again to the output of ReLU, this time $W$ has the shape **(nx10)**, where 10 is the number of classes in MNIST.
 
 4. The last linear operation is followed by a [Softmax](https://en.wikipedia.org/wiki/Softmax_function) function that will turn the output of the linear operation (logits) into class probabilities. Below is the formula to compute Softmax:
 
-   \[
-   \sigma(z)_i = \frac{e^{\beta_{z*i}}}{\sum*{j=1}^{K} e^{\beta\_{z_j}}}
-   \]
+   $$
+   \sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
+   $$
 
-   for \(i = 1, \ldots, K\).
+   for $i = 1, \ldots, K$.
 
 ### Metrics Computing
 
 After the forward propagation, the loss and accuracy are computed. The loss is a way to quantify "how much error" the Perceptron makes. To compute the error, we use the Negative Log-Likelihood (NLL):
 
-\[
-L*i = -\sum_j y*{i,j} \log(\hat{y}\_{i,j})
-\]
+$$
+L_i = -\sum_j y_{i,j} \log(\hat{y}_{i,j})
+$$
 
 The accuracy is also computed as it is an easier metric to understand:
 
-\[
-\frac{1}{k} \sum\_{i=1}^{k} (\hat{y_i} - y_i)
-\]
+$$
+\text{Accuracy} = \frac{1}{k} \sum_{i=1}^{k} (\hat{y}_i == y_i)
+$$
 
-Here, \(\hat{y_i}\) and \(y_i\) are binary.
+Here, $\hat{y}_i$ and $y_i$ are binary.
 
 ### Backward Propagation
