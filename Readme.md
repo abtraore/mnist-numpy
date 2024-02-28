@@ -41,7 +41,12 @@ The forward propagation consist for 3 steps in our case:
 
 3. We apply again the linear operation to the output of ReLU this time W has the shape (n, 10). 10 is the number of classes in MNIST.
 
-4. The last linear operation is followed by a [Softmax](https://en.wikipedia.org/wiki/Softmax_function) that will turn the output of the linear operation (logits) to class propabilities. Below is the formula to compute softmax:$$\sigma(z)_i=\frac{e^{\beta{_{z_{i}}}}}{\sum_{j=1}^{K}e^{\beta{_{z_{j}}}}}$$ for i = 1,...,K.
+4. The last linear operation is followed by a [Softmax](https://en.wikipedia.org/wiki/Softmax_function) that will turn the output of the linear operation (logits) to class propabilities. Below is the formula to compute softmax:
+   $$
+   \sigma(z)_i=\frac{e^{\beta{_{z_{i}}}}}{\sum_{j=1}^{K}e^{\beta{_{z_{j}}}}}
+   $$
+
+for i = 1,...,K.
 
 ### Metrics computing
 
