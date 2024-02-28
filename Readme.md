@@ -23,7 +23,6 @@ The learning process can be divided into **4 parts** that we repeat **e** epochs
 
 ### Forward Propagation
 
-$\sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}$
 The forward propagation consists of 3 steps in our case:
 
 1. Compute $\hat{y}$ by following the formula: $$\hat{y} = Wx + b$$ where $x$ is the flattened input **(mx784)**, $W$ the weights **(784xn)**, and $b$ the bias **(1xn)**. The output of this operation will have a shape of **(mxn)**.
@@ -43,6 +42,12 @@ The forward propagation consists of 3 steps in our case:
 3. We apply the linear operation again to the output of ReLU, this time $W$ has the shape **(nx10)**, where 10 is the number of classes in MNIST.
 
 4. The last linear operation is followed by a [Softmax](https://en.wikipedia.org/wiki/Softmax_function) function that will turn the output of the linear operation (logits) into class probabilities. Below is the formula to compute Softmax:
+
+   $$
+    sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
+   $$
+
+   for $i = 1, \ldots, K$.
 
 ### Metrics Computing
 
