@@ -47,7 +47,7 @@ if __name__ == "__main__":
     seed = 2025
 
     # Load MNIST data
-    data = pd.read_csv("train.csv").to_numpy()
+    data = pd.read_csv("mnist_train.csv").to_numpy()
 
     # Prepare data
     X = data[:, 1:] / 255.0
