@@ -91,7 +91,7 @@ if __name__ == "__main__":
         total_acc = 0.0
         for iter in range(train_iter_max):
 
-            # Get data.
+            # Get mini batch.
             batch_x = X_train[iter : iter + batch_size]
             batch_y = y_train[iter : iter + batch_size]
 

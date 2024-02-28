@@ -44,7 +44,7 @@ The forward propagation consists of 3 steps in our case:
 4. The last linear operation is followed by a [Softmax](https://en.wikipedia.org/wiki/Softmax_function) function that will turn the output of the linear operation (logits) into class probabilities. Below is the formula to compute Softmax:
 
    $$
-    sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
+    \sigma(z)_i = \frac{e^{z_i}}{\sum_{j=1}^{K} e^{z_j}}
    $$
 
    for $i = 1, \ldots, K$.
@@ -66,3 +66,11 @@ $$
 Here, $\hat{y}_i$ and $y_i$ are binary.
 
 ### Backward Propagation
+
+Full $$ L_{NLL} = NLL\left(Y, Softmax\left(ReLU\left(XW_1 + b_1\right)W_2 + b_2\right)\right)$$
+
+The goal is to compute the gradent of L w.r.t to W and b the parameters. Bellow are the steps to follow
+
+1. Compute the gradient of NLL (L) w.r.t Softmax (the simple expression is the result more elaborate calculus): $$ \frac{\delta{L}}{\delta{softmax}} = softmax\_{out} -y\_{true} $$
+
+ $$ \frac{\delta{L}}{\delta{W_{2}}} =  ReLU^{T}_{out}  \frac{\delta{L}}{\delta{softmax\_{out}}} $$
