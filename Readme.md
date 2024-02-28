@@ -44,7 +44,7 @@ The forward propagation consists of 3 steps in our case:
 4. The last linear operation is followed by a [Softmax](https://en.wikipedia.org/wiki/Softmax_function) function that will turn the output of the linear operation (logits) into class probabilities. Below is the formula to compute Softmax:
 
    $$
-   sigma(z)_i =
+   sigma =
    $$
 
 ### Metrics Computing
