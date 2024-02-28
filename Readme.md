@@ -10,7 +10,7 @@ This repo contains a perceptron implementation using numpy. There is no hidden d
 
 ## ARCHITECTURE
 
-The perceptron has <B>3 layers</B>, the input layers with <B>784 neurons</B> (28x28), a hidden layer with <B>n</B> neurons (n is a hyper-parameter) and the output layer with <B>10 neurons</B> (10 classes).
+The perceptron has <B>3 layers</B>, the input layers with <B>784 neurons</B> (28x28), a hidden layer with <B>n</B> neurons (n is an hyper-parameter) and the output layer with <B>10 neurons</B> (10 classes).
 Below is a simple representation of the architecture.
 
 <p align="center" style="width:100%">
@@ -19,8 +19,30 @@ Below is a simple representation of the architecture.
 
 ## Training proccess
 
+The learning proccess can be divided into <B>4 parts</B> that we repeat <B>"e"</B> epochs time.
+
 ### Forward propagation
 
-### Metric computing
+The forward propagation consist for 3 steps in our case:
+
+1. Compute $\hat{y}$ by following the formula: $$\hat{y}=Wx+b$$ where x is the flattened input <B>(mx784)</B>, W the weights <B>(784xn)</B> and b the bias <B>(1xn)</B>. The output of this operation will have a shape of <B>(mxn)</B>.
+
+2. The linear operation is followed by an <B>"activation"</B> function in our case [ReLU](<https://en.wikipedia.org/wiki/Rectifier_(neural_networks)>) that can be seen as if a neuron is <B>"fired or not"</B>. ReLU equation is:
+
+   $$
+   f(x) =
+   \begin{cases}
+       x \text{ if } x > 0,\\
+       0 \text{ otherwhise}
+   \end{cases}
+   $$
+
+   Note that the shape of the input remain unchanged after this operation.
+
+3. We apply again the linear operation to the output of ReLU this time W has the shape (n, 10). 10 is the number of classes in MNIST.
+
+4. The last linear operation is followed by a [Softmax](https://en.wikipedia.org/wiki/Softmax_function) that will turn the output of the linear operation (logits) to class propabilities. Below is the formula to compute softmax:$$\sigma(z)_i=\frac{e^{\beta{_{z_{i}}}}}{\sum_{j=1}^{K}e^{\beta{_{z_{j}}}}}$$ for i = 1,...,K.
+
+### Metrics computing
 
 ### Backward propagation
