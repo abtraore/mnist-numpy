@@ -47,8 +47,6 @@ The forward propagation consists of 3 steps in our case:
    sigma(z)_i =
    $$
 
-   for $i = 1, \ldots, K$.
-
 ### Metrics Computing
 
 After the forward propagation, the loss and accuracy are computed. The loss is a way to quantify "how much error" the Perceptron makes. To compute the error, we use the Negative Log-Likelihood (NLL):
