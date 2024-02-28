@@ -45,6 +45,18 @@ The forward propagation consist for 3 steps in our case:
 
 ### Metrics computing
 
-After the forward propagation, the loss and the accuracy is computed. The loss is a way to quantify the how much "error" the perceptron make.
+After the forward propagation, the loss and the accuracy is computed. The loss is a way to quantify "how much error" the perceptron make. To compute the error we use the negative-log-likelyhood (NLL):
+
+$$
+L_i=-\sum_j{y_{i,j}log(\hat{y}_{i,j})}
+$$
+
+The accuracy also is computed as is the a more easy metric to understand:
+
+$$
+\frac{1}{k}\sum^k_{i=1}{(\hat{y_i}-y_i)}
+$$
+
+$\hat{y_i}$ and $y$ are binary.
 
 ### Backward propagation
