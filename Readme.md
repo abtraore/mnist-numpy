@@ -45,4 +45,6 @@ The forward propagation consist for 3 steps in our case:
 
 ### Metrics computing
 
+After the forward propagation, the loss and the accuracy is computed. The loss is a way to quantify the how much "error" the perceptron make.
+
 ### Backward propagation

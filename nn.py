@@ -46,10 +46,10 @@ def decay(current_iteration, lr, decay=1e-5) -> float:
 if __name__ == "__main__":
     seed = 2025
 
-    # Load MNIST data
+    # Load MNIST data.
     data = pd.read_csv("mnist_train.csv").to_numpy()
 
-    # Prepare data
+    # Prepare data.
     X = data[:, 1:] / 255.0
     y = data[:, 0]
 
@@ -147,7 +147,7 @@ if __name__ == "__main__":
             + f"lr:{current_lr:.3} "
         )
 
-    # Testing
+    # Testing.
     print("\nTesting:")
     total_acc = 0.0
     for iter in range(test_iter_max):
