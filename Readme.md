@@ -21,7 +21,7 @@ Below is a simple representation of the architecture.
 
 The learning process can be divided into **4 parts** that we repeat **e** epochs.
 
-### Forward Propagation
+### I - Forward Propagation
 
 The forward propagation consists of 3 steps in our case:
 
@@ -47,7 +47,7 @@ The forward propagation consists of 3 steps in our case:
 
    for $i = 1, \ldots, K$.
 
-### Metrics Computing
+### II - Metrics Computing
 
 After the forward propagation, the loss and accuracy are computed. The loss is a way to quantify "how much error" the Perceptron makes. To compute the error, we use the Negative Log-Likelihood (NLL):
 
@@ -63,20 +63,20 @@ The accuracy is also computed as it is an easier metric to understand:
 
 Here, $\hat{y}_i$ and $y_i$ are binary.
 
-### Backward Propagation
+### III - Backward Propagation
 
 <p align="center">
     <img src="./assets/loss.png">
 </p>
 
-$Z_1 = XW_1+b_1$<br>
-$A_1 = ReLU(Z_1)$<br>
-$Z_2 = H_1W_2+b_2$<br>
-$S = Softmax(A_2)$<br>
+$Z_1 = XW_1+b_1$  
+$A_1 = ReLU(Z_1)$  
+$Z_2 = H_1W_2+b_2$  
+$S = Softmax(A_2)$  
 
-The goal is to compute the gradent of L w.r.t to W and b the parameters. Bellow are the steps to follow
+The goal is to compute the gradient of L w.r.t to $W$ and $b$ the parameters. Below are the steps to follow:
 
-1. Compute the gradient loss gradient w.r.t Softmax's output (S) (the simple expression of the gradient is the result of a more elaborate calculus simplication): 
+1. Compute the gradient loss gradient w.r.t Softmax's output (S) (the simple expression of the gradient is the result of a more elaborate calculus simplification): 
 
 <p align="center">
     <img src="./assets/dl.png">
@@ -117,3 +117,15 @@ The goal is to compute the gradent of L w.r.t to W and b the parameters. Bellow 
 <p align="center">
     <img src="./assets/db1.png">
 </p>
+
+### IV - Update Parameters
+
+After getting the gradients of the parameters from step 3, we can now update the parameters:
+
+$W_1 = W_1 - \alpha * dW_1$  
+
+$W_2 = W_2 - \alpha * dW_2$  
+
+$b_1 = b_1 - \alpha * db_1$  
+
+$b_2 = b_2 - \alpha * db_2$
