@@ -76,17 +76,17 @@ $S = Softmax(A_2)$<br>
 
 The goal is to compute the gradent of L w.r.t to W and b the parameters. Bellow are the steps to follow
 
-1. Compute the gradient of NLL (L) w.r.t Softmax's output (S) (the simple expression is the result more elaborate calculus): 
+1. Compute the gradient loss gradient w.r.t Softmax's output (S) (the simple expression of the gradient is the result of a more elaborate calculus simplication): 
 $$ 
 \frac{\delta{L}}{\delta{Z_2}} = S - Y \\
 $$
-2. [REDACTED]
+2. Compute the loss gradient w.r.t $W_2$:
 $$ \frac{\delta{L}}{\delta{W_{2}}} = A_1^T . \frac{\delta{L}}{\delta{Z_2}} $$
-3. [REDACTED]
+3. Compute the loss gradient w.r.t $b_2$:
 $$ \frac{\delta{L}}{\delta{b_{2}}} = \sum(\frac{\delta{L}}{\delta{Z_2}}, axis = 0) $$
-4. [REDACTED]
+4. Compute the loss gradient w.r.t $A1$ (intermediate step to compute $\delta{W_1}$):
 $$ \frac{\delta{L}}{\delta{A_1}} = \frac{\delta{L}}{\delta{Z_2}} . W_2^T $$
-5. [REDACTED]
+5. Compute the loss gradient w.r.t $Z_1$ 
 $$ \frac{\delta{L}}{\delta{Z_1}} = \frac{\delta{L}}{\delta{A_1}} ⊙ \frac{\delta{A_1}}{\delta{Z_1}}$$
 6. [REDACTED]
 $$ \frac{\delta{L}}{\delta{W_1}} =  X^T . \frac{\delta{L}}{\delta{Z_1}}$$
