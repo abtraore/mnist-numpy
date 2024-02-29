@@ -72,7 +72,7 @@ if __name__ == "__main__":
     decay_rate = 1e-5
     current_lr = lr
     batch_size = 32
-    epochs = 25
+    epochs = 30
     batch_shuffle = True
 
     train_iter_max = X_train.shape[0] // batch_size
@@ -112,23 +112,19 @@ if __name__ == "__main__":
             accuracy = np.mean(predictions == batch_y)
             total_acc += accuracy
 
-            # Compute Loss Gradient.
+            # Compute gradient of the output of the softmax w.r.t the loss.
             dl = softmax_output.copy()
             dl[range(len(softmax_output)), batch_y] -= 1.0
             dl /= dl.shape[0]
 
-            # Compute L2 Gradients.
+            # Compute L2 w.r.t w2 Gradients.
             dw_l2 = relu_out.T @ dl
-            dx_l2 = dl @ l2.w.T
             db_l2 = np.sum(dl, axis=0, keepdims=True)
 
             # Compute ReLU Gradients.
-            drelu = dx_l2.copy()
-            drelu[relu_out <= 0] = 0
-
+            drelu = (dl @ l2.w.T) * (relu_out > 0)
             # Compute L1 Gradients.
             dw_l1 = batch_x.T @ drelu
-            dx_l1 = drelu @ l1.w.T
             db_l1 = np.sum(drelu, axis=0, keepdims=True)
 
             # Update parameters.
