@@ -121,7 +121,7 @@ if __name__ == "__main__":
             dw_l2 = relu_out.T @ dl
             db_l2 = np.sum(dl, axis=0, keepdims=True)
 
-            # Compute ReLU Gradients.
+            # Compute ReLU Gradients w.r.t loss (intermediare computation to compute dw_l1).
             drelu = (dl @ l2.w.T) * (relu_out > 0)
             # Compute L1 Gradients.
             dw_l1 = batch_x.T @ drelu
