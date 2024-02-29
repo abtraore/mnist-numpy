@@ -29,9 +29,9 @@ The forward propagation consists of 3 steps in our case:
 
 2. The linear operation is followed by an **"activation"** function, in our case [ReLU](<https://en.wikipedia.org/wiki/Rectifier_(neural_networks)>), that can be seen as if a neuron is **"fired or not"**. ReLU equation is:
 
-    <p align="center">
-        <img src="./assets/relu.png">
-    </p>
+<p align="center">
+    <img src="./assets/relu.png">
+</p>
 
    
    
