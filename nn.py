@@ -112,12 +112,12 @@ if __name__ == "__main__":
             accuracy = np.mean(predictions == batch_y)
             total_acc += accuracy
 
-            # Compute gradient of the output of the softmax w.r.t the loss.
+            # Compute gradient of the loss w.r.t softmax's output (S).
             dl = softmax_output.copy()
             dl[range(len(softmax_output)), batch_y] -= 1.0
             dl /= dl.shape[0]
 
-            # Compute L2 w.r.t w2 Gradients.
+            # Compute L2 gradient w.r.t w2.
             dw_l2 = relu_out.T @ dl
             db_l2 = np.sum(dl, axis=0, keepdims=True)
 

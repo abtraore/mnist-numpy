@@ -86,9 +86,9 @@ $$ \frac{\delta{L}}{\delta{W_{2}}} = A_1^T . \frac{\delta{L}}{\delta{Z_2}} $$
 $$ \frac{\delta{L}}{\delta{b_{2}}} = \sum(\frac{\delta{L}}{\delta{Z_2}}, axis = 0) $$
 4. Compute the loss gradient w.r.t $A1$ (intermediate step to compute $\delta{W_1}$):
 $$ \frac{\delta{L}}{\delta{A_1}} = \frac{\delta{L}}{\delta{Z_2}} . W_2^T $$
-5. Compute the loss gradient w.r.t $Z_1$ 
+5. Compute the loss gradient w.r.t $Z_1$:
 $$ \frac{\delta{L}}{\delta{Z_1}} = \frac{\delta{L}}{\delta{A_1}} ⊙ \frac{\delta{A_1}}{\delta{Z_1}}$$
-6. [REDACTED]
+6. Compute the loss gradient w.r.t $W_1$:
 $$ \frac{\delta{L}}{\delta{W_1}} =  X^T . \frac{\delta{L}}{\delta{Z_1}}$$
-7. [REDACTED]
+7. Compute the loss gradient w.r.t $b_1$:
 $$ \frac{\delta{L}}{\delta{b_{1}}} =  \sum({\frac{\delta{L}}{\delta{Z_1}},axis = 1}) $$
